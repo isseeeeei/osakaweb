@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>O-ea</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background-color: #e8ddb3;
+      overflow:hidden;
+    }
+
+    .container {
+      display: flex;
+      height: 100vh;
+      z-index: 1;
+      position: relative;
+    }
+
+    .column {
+      flex: 1;
+      padding: 10px;
+      box-sizing: border-box;
+      overflow-y: auto; /* もし内容が多い場合はその列だけスクロール */
+      border: 0px solid #ccc;
+    }
+
+    .column p {
+        margin: 0 0 1em 0;
+        font-size: 30px;
+        color: #555;
+        font-family: 'Times New Roman', Times, serif;
+    }
+
+
+
+    /* 画像の重ねレイヤー */
+    .image-layer {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: auto;
+      z-index: 10;
+      filter: drop-shadow(10px 10px 10px #00000043);
+      display: block;
+    }
+
+    .image-layer a {
+      position: absolute;
+      display: block;
+      transition: transform 0.3s ease;
+    }
+
+    .image-layer img {
+      display: block;
+      width: 100%;
+      height: auto;
+    }
+
+
+
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="column">
+      <p>The 0-eA Society for the Curatorial is a post-academic curatorial initiative with a focus on creative unlearning. It mediates interdisciplinary dialogues, publishes periodicals, and offers residency programmes, in which we work collaboratively to broaden our critical horizons and elaborate on theoretical and practical approaches to discursive and other sensory modes of inquiry. In the upcoming years, 0-eA is committed to exploring the agency, affect, and social significance of artistic assemblies and their emergence in the site of everyday life. This focus aims to create a common ground for the gathering of regional actors across various fields of expertise. 
+      </p>
+    </div>
+    <div class="column">
+      <p>2025</p>
+      <p><a href="https://example.com">YANARI</a> (Rattling A House) is a two-day curatorial symposium exploring the entanglements of media, exhibition-making, and geopolitics through the prism of spectral reverberation. Taking place at the Tokyo Photographic Art Museum, the programme brings together artists, curators, and scholars to engage with curatorial thinking attuned to discursive rupture and historical residue. Through screenings, performative lectures, academic panels, the symposium reflects on how curatorial practices respond to inherited forms of instability—both material and affective—within screen practices, exhibition histories, and geopolitical imaginaries across East Asia.
+        </p>
+        <p> 
+            (1) Technology of the Spirit: Presented by Anton Vidokle, Hallie Ayres, Lukas Brasiskis, Ryo Sawayama, Jin Kwon, Hiroko Tasaka, Jung-Yeon Ma (moderator), with films by Anton Vidokle, Jane Jin Kaisen, Maya Deren, and Shana Moulton screened as part of the session.
+        </p>
+        <p>
+            (2) ‘Free World’ Imaginary: Presented by Kai Chung Lee, Hyunjin Kim, Jau-lan Guo, Hikaru Fujii, and Riku Iioka (moderator), staged with an oil painting by Tsuguharu Fujita.
+        </p>
+        <p>
+            (3) Legacies of Exposition: Presented by David Teh, Grace Samboh, Kathleen Ditzig, Kay Min Soh, Kaho Ikeda + Koichiro Osaka (moderators).
+        </p>
+    </div>
+    <div class="column">
+      <p>2023</p>
+        <p>
+            Yoshua Okon: Shita xxxx xxxxxxxxxxxx xxxxxxx xxxxxxx xxxxxxxxxxxxxx xxxxx xxxxxxxxxxxxxx xxx xxxxxx xxxxxxxxxxxxxxxxxxxxxxxx xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx xxxxxxxx xxxxxxxxxxxxxxxx xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx xxxxxx xxxxxxxxxxx xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx.
+        </p>
+・Shita (Under) (2018-23) ,
+・Shita (Under) (2018-23) ,
+・Artist Talk (2020)
+
+Jusatsu Kito Sodan xxxx xxxxxxxxxxxx xxxxxxx xxxxxxx xxxxxxxxxxxxxx xxxxx xxxxxxxxxxxxxx xxx xxxxxx xxxxxxxxxxxxxxxxxxxxxxxx xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx xxxxxxxx xxxxxxxxxxxxxxxx xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx xxxxxx xxxxxxxxxxx xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx.
+
+・Shita (Shit) (2018-23) ,
+・Shita (Shit) (2018-23) ,
+・Artist Talk (2020)
+
+Royce Ng xxxx xxxxxxxxxxxx xxxxxxx xxxxxxx xxxxxxxxxxxxxx xxxxx xxxxxxxxxxxxxx xxx xxxxxx xxxxxxxxxxxxxxxxxxxxxxxx xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx xxxxxxxx xxxxxxxxxxxxxxxx xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx xxxxxx xxxxxxxxxxx xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx.
+
+・Unit 731(2018-23) ,
+・Showa no Kaibutsu (2018-23) ,
+・Artist Talk by Royce and Nikilai (2020)
+・Curator Talk: Hiroki (2020)
+
+Art As Technology #1 xxxx xxxxxxxxxxxx xxxxxxx xxxxxxx xxxxxxxxxxxxxx xxxxx xxxxxxxxxxxxxx xxx xxxxxx xxxxxxxxxxxxxxxxxxxxxxxx xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx xxxxxxxx xxxxxxxxxxxxxxxx xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx xxxxxx xxxxxxxxxxx xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx.
+
+・Berardi (Video/PDF)
+・Hester (Video/PDF)
+・Koniol (Video/PDF)
+
+Art As Technology #2 xxxx xxxxxxxxxxxx xxxxxxx xxxxxxx xxxxxxxxxxxxxx xxxxx xxxxxxxxxxxxxx xxx xxxxxx xxxxxxxxxxxxxxxxxxxxxxxx xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx xxxxxxxx xxxxxxxxxxxxxxxx xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx xxxxxx xxxxxxxxxxx xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx.
+
+・Whark (Video/PDF)
+・Brei/Ruri (Video/PDF)
+・Ng/Smirnov (Video/PDF)
+
+    </div>
+    <div class="column">
+      <p>テキスト4</p>
+      <p>テキスト4</p>
+      <p>テキスト4</p>
+    </div>
+
+      <div class="image-layer" id="imageLayer"></div>  
+
+  </div>
+
+  <script>
+    // ランダム設定（自由に変えてください）
+    const numImages = 5;
+    const sizeRange = [160, 720];     // px単位
+    const rotateRange = [-30, 30];   // degrees
+    const imageLinks = [
+      { src: "img/1.jpeg", href: "https://example.com/1" },
+      { src: "img/2.jpeg", href: "https://example.com/2" },
+      { src: "img/3.jpeg", href: "https://example.com/3" },
+      { src: "img/4.jpeg", href: "https://example.com/4" },
+      { src: "img/5.png", href: "https://example.com/5" },
+    ];
+
+    const layer = document.getElementById('imageLayer');
+
+    imageLinks.forEach((imgData, i) => {
+      const a = document.createElement('a');
+      a.href = imgData.href;
+      a.target = '_blank';
+
+      const img = document.createElement('img');
+      img.src = imgData.src;
+
+      const size = Math.floor(Math.random() * (sizeRange[1] - sizeRange[0]) + sizeRange[0]);
+      const rotate = Math.floor(Math.random() * (rotateRange[1] - rotateRange[0]) + rotateRange[0]);
+      const top = Math.random() * 80;   // % の範囲で
+      const left = Math.random() * 80;
+
+      a.style.width = size + "px";
+      a.style.transform = `rotate(${rotate}deg)`;
+      a.style.top = top + "%";
+      a.style.left = left + "%";
+
+      a.appendChild(img);
+      layer.appendChild(a);
+    });
+  </script>
+</body>
+</html>
